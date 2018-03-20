@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/free_dialog_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="用户名："
+                android:textSize="22dp"
+                android:layout_weight="2"/>
+
+            <EditText
+                android:id="@+id/usetext"
+                android:layout_width="0dp"
+                android:editable="false"
+                android:textIsSelectable="true"
+                android:textColor="#38ADFF"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:textSize="22dp"
+                android:layout_height="match_parent"
+                android:text="密    码："
+                android:layout_weight="2"/>
+
+
+            <EditText
+                android:id="@+id/pastext"
+                android:layout_width="0dp"
+                android:textColor="#38ADFF"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:textIsSelectable="true"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/keytext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:inputType="numberPassword"
+                android:layout_weight="2"
+                android:hint="请输入密钥"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/check"
+                android:layout_width="0dp"
+                android:text="查看密码"
+                android:textSize="18dp"
+                android:layout_height="match_parent"
+                android:textColor="#38ADFF"
+                android:background="@null"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/cancle"
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="取消"
+                android:background="@null"
+                android:textColor="#7D7D7D"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -7,6 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.ResourceCursorAdapter;
@@ -37,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -48,14 +52,13 @@ public class GetFragment extends Fragment implements KeyListAdapter.OnKeyItemCli
     RefreshableView refreshableView;
     ListView listView;
 
-    private static final String url_get_all_key = "http://www.liuyanbo.top/lib/get.php";
-    private static final String url_search_key = "http://www.liuyanbo.top/lib/search.php";
-    private static final String url_delete_key = "http://www.liuyanbo.top/lib/delete.php";
+    private static final String url_get_all_key = "http://119.28.204.228/api/get.php";
+    private static final String url_search_key = "http://119.28.204.228/api/search.php";
+    private static final String url_delete_key = "http://119.28.204.228/api/delete.php";
     JSONParser jsonParser = new JSONParser();
 
     private static final String TAG = "Liu";
     private static final String TAG_CODE = "code";
-    private static final String TAG_MSG = "msg";
     private static final String TAG_DATA = "data";
     private static final String TAG_ID = "id";
     private static final String TAG_APP ="app";
@@ -292,19 +295,29 @@ public class GetFragment extends Fragment implements KeyListAdapter.OnKeyItemCli
             JSONObject json = jsonParser.makeHttpRequest(url_delete_key,"GET",param);
             try {
                 int code = json.getInt(TAG_CODE);
-                switch (code){
-                    case 0:
-                        Toast.makeText(getActivity(), "删除失败", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        Toast.makeText(getActivity(), "删除成功", Toast.LENGTH_SHORT).show();
-                        break;
-                }
+                handler.sendEmptyMessage(code);
             }catch (JSONException e){
-                Toast.makeText(getActivity(), "删除失败", Toast.LENGTH_SHORT).show();
+                handler.sendEmptyMessage(2);
                 e.printStackTrace();
             }
             return null;
         }
     }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what){
+                case 0:
+                    Toast.makeText(getActivity(), "删除失败", Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Toast.makeText(getActivity(), "删除成功", Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    Toast.makeText(getActivity(), "删除失败", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
 }

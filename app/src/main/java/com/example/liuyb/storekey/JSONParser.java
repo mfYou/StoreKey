@@ -63,7 +63,7 @@ public class JSONParser {
             }
         } else if (method == "GET") {
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            String paramString = URLEncodedUtils.format(params, "gbk");
+            String paramString = URLEncodedUtils.format(params, "utf-8");
             url += "?" + paramString;
             Log.e("url", url + "");
             HttpGet httpGet = new HttpGet(url);

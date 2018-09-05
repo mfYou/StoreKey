@@ -36,7 +36,7 @@ public class StoreFragment extends Fragment implements View.OnClickListener{
     private static final String TAG_KEY = "key";
     private static final String TAG_CODE = "code";
 
-    private static final String url_store_key = "http://www.liuyanbo.top/lib/store.php";
+    private static final String url_store_key = "http://119.28.204.228/api/insert.php";
     JSONParser jsonParser = new JSONParser();
 
     EditText app, username,password,key;
